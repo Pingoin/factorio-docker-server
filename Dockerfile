@@ -27,4 +27,4 @@ COPY ./docker-entrypoint.sh /
 
 USER $USER
 
-ENTRYPOINT ["/docker-entrypoint.sh $VERSION"]
+ENTRYPOINT /docker-entrypoint.sh $VERSION
