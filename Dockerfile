@@ -25,6 +25,9 @@ EXPOSE $PORT/udp $RCON_PORT/tcp
 
 COPY ./docker-entrypoint.sh /
 
+RUN chown $USER:$GROUP /docker-entrypoint.sh \
+	chmod 777 /docker-entrypoint.sh
+
 USER $USER
 
 ENTRYPOINT /docker-entrypoint.sh $VERSION
