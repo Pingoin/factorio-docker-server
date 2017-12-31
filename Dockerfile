@@ -14,7 +14,6 @@ ENV PORT=34197 \
 RUN mkdir -p /factorio && \
     apk add --update --no-cache pwgen && \
     apk add --update --no-cache --virtual .build-deps curl && \
-    apk del .build-deps && \
     addgroup -g $PGID -S $GROUP && \
     adduser -u $PUID -G $USER -s /bin/sh -SDH $GROUP
 
