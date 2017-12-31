@@ -12,6 +12,9 @@ ENV PORT=34197 \
     VERSION=0.16.11
 
 RUN mkdir -p /factorio && \
+	mkdir /factorio/config &&\
+	mkdir /factorio/mods &&\
+	mkdir /factorio/saves &&\
     apk add --update --no-cache pwgen && \
     apk add --update --no-cache --virtual .build-deps curl && \
     apk del .build-deps && \
