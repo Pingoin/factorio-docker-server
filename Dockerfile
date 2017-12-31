@@ -9,7 +9,7 @@ ARG PGID=1000
 
 ENV PORT=34197 \
     RCON_PORT=27015 \
-    VERSION=0.16.11 \
+    VERSION=0.16.11
 
 RUN mkdir -p /factorio && \
     apk add --update --no-cache pwgen && \
