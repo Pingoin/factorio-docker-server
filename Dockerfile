@@ -12,15 +12,11 @@ ENV PORT=34197 \
     VERSION=0.16.11
 
 RUN mkdir -p /factorio && \
-	mkdir /factorio/config &&\
-	mkdir /factorio/mods &&\
-	mkdir /factorio/saves &&\
     apk add --update --no-cache pwgen && \
     apk add --update --no-cache --virtual .build-deps curl && \
     apk del .build-deps && \
     addgroup -g $PGID -S $GROUP && \
-    adduser -u $PUID -G $USER -s /bin/sh -SDH $GROUP && \
-    chown -R $USER:$GROUP /factorio
+    adduser -u $PUID -G $USER -s /bin/sh -SDH $GROUP
 
 VOLUME /factorio
 
@@ -29,6 +25,10 @@ EXPOSE $PORT/udp $RCON_PORT/tcp
 COPY ./docker-entrypoint.sh /
 
 RUN chown $USER:$GROUP /docker-entrypoint.sh &&\
+	mkdir /factorio/config &&\
+	mkdir /factorio/mods &&\
+	mkdir /factorio/saves &&\
+	chown -R $USER:$GROUP /factorio &&\
 	chmod 777 /docker-entrypoint.sh
 
 USER $USER
